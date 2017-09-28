@@ -12,7 +12,8 @@ console.log("addListenerToButton");
 };
 
 //callback for click event that triggers request to API
-function saveText() {
+function saveText(event) {
+	event.preventDefault()
 	var userInput = document.getElementsByTagName("input")[0].value;
 	
 	if (userInput === "") {
@@ -43,7 +44,7 @@ console.log("got to module");
 		store: function(val){
 			storedValue.push(val);
 			console.log("got to module.store");
-			displayArray();
+			module.updateDisplay();
 		},
 
 		retrieve: function(){
@@ -53,17 +54,24 @@ console.log("got to module");
 			return storedValue[0][0];
 		},
 
-		pageTitle: function(){
+		searchResultTitles: function(){
 			return storedValue[0][1];
 		},
 
-		pageDescription: function(){
+		searchResultdescription: function(){
 			return storedValue[0][2];
 		},
 
-		pageUrl: function(){
+		searchResultUrl: function(){
 			return storedValue[0][3];
 		},
+
+		updateDisplay: function(){
+			displayArray();
+			displaySearchTerm();
+			createResults();
+			
+		}
 	}
 
 }());
@@ -72,151 +80,27 @@ function displayArray(){
 	var stored = module.retrieve();	
 	pTag = document.getElementsByTagName("p")[0];
 	text = pTag.textContent = stored;
-
 }
 
-
-/*
-
-
-function updateDom(){
-	var pageTitle = module.pageTitle()
-	pageTitle.forEach(createNewDiv);
-}
-
-var createNewDiv = function(item){
-	var newDiv = document.createElement("div");
-	newDiv.TextContent = item;
-	document.body.appendChild(newDiv);
+function displaySearchTerm(){
+	var selectHeader = document.getElementsByTagName("header")[1];
+	selectHeader.textContent = module.searchTerm(); 
 }
 
 
 
-
-var createNewDiv = function(item){
-	var newDiv = document.createElement("div");
-	var newHeader = document.createElement("header");
-	var text = document.createTextNode(item);
-	newHeader.appendChild(text);
-	newDiv.appendChild(newHeader);
-	document.main.appendChild(newDiv);
+function createResults(){
+	var arr = module.searchResultTitles();
+	arr.forEach(function(item){
+		var div = document.createElement("div");
+		div.setAttribute("class", "result");
+		document.body.main.appendChild(div);
+	})
 }
-
-
-
-
-
-
-function handleResponse(response) {
-		var store = [];
-		store.push(response);
-		}
-
-
-
-var modularPattern = (function(response) {
-	console.log(response)
-}());
-
-function handleResponse(response) {
-		console.log(response);
-		}
-function storeResponse(arr){
-	return function(){
-		return arr;
-	}
-};
-
-
-requestJSONP();
-
-
-
-
-function handleResponse(response) {
-		if (response !== undefined) {
-			
-		var storedResult = function(){
-			var result = [];
-			result.push(response);
-		}();
-
-		else {
-			return 
-		}
-
-		var result = [];
-		result.push(response);
-		storeResponse(result);
-};	
-
-
-
-
-test = [];
-function responseWrapper(response){
-	if (response !== undefined) {
-		var storeResult = [];
-		storeResult.push(response)
-		test.push(response);
-	}
-	return function() {
-		return storeResult;
-	}
-}
-
-
-
-
-function handleResponse(response) {
-		var result = [];
-		result.push(response);
-		storeResponse(result);
-}	
 		
-function storeResponse(arr){
-	return function(){
-		return arr;
-	}
-}
-	
 
 
-var result = handleResponse();
-
-function makeRequestHandleRespone(url){
-	var xhr = new XMLHttpRequest(); 
-
-	xhr.open("GET", url, true);
-	
-	xhr.setRequestHeader( 'Api-User-Agent', 'Example/1.0' );
-	
-	xhr.send(null);
-
-	xhr.onload = function() {
-		if (xhr.status === 200) {
-			storeResult.push(JSON.parse(xhr.response));
-    	 	}
- 		else {console.log("error: status is not 200")
-      		}
- 	}
-};
 
 
-var module = (function(){
-	storedValue = [];
 
-	return {
-		store: function(val){
-			storedValue.push(val);
-		},
-
-		retrieve: function(){
-			return storedValue;
-		},
-	}
-
-}());
-
-*/
 
