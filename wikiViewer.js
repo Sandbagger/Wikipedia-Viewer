@@ -17,11 +17,15 @@ function saveText(event) {
 	var userInput = document.getElementsByTagName("input")[0].value;
 	
 	if (userInput === "") {
-		alert("Please enter a search term")
+		window.open('https://en.wikipedia.org/wiki/Special:Random');
 		return 
 	}
+
+	
 	requestJSONP(userInput);
+	toggledisplayResults();
 	console.log("saveText");
+
 };
 
 //advoids cross browser origin error
@@ -67,10 +71,11 @@ console.log("got to module");
 		},
 
 		updateDisplay: function(){
-			displayArray();
+			/*splayArray();*/
 			displaySearchTerm();
-			createResults();
-			
+			displayTitles();
+			displaySummary();
+			updateResultsUrl()
 		}
 	}
 
@@ -83,24 +88,42 @@ function displayArray(){
 }
 
 function displaySearchTerm(){
-	var selectHeader = document.getElementsByTagName("header")[1];
-	selectHeader.textContent = module.searchTerm(); 
+	var selectHeader = document.getElementsByTagName("p")[0];
+	selectHeader.textContent = "You searched for... " + module.searchTerm(); 
 }
 
 
-
-function createResults(){
-	var arr = module.searchResultTitles();
-	arr.forEach(function(item){
-		var div = document.createElement("div");
-		div.setAttribute("class", "result");
-		document.body.main.appendChild(div);
-	})
+function displayTitles(){
+    var displayResults =  Array.prototype.slice.call(document.querySelectorAll(".result header"));
+    var titles = module.searchResultTitles();
+    for (var i = 0; i < displayResults.length; i++) {
+        var result = displayResults[i];
+        result.innerHTML = titles[i];
+        console.log(displayResults[i]);
+    }
 }
-		
 
+function displaySummary(){
+	    var displayResults =  Array.prototype.slice.call(document.querySelectorAll(".result summary"));
+    var titles = module.searchResultdescription();
+    for (var i = 0; i < displayResults.length; i++) {
+        var result = displayResults[i];
+        result.innerHTML = titles[i];
+        console.log(displayResults[i]);
+	}
+}
 
+function updateResultsUrl(){
+	var displayResults =  Array.prototype.slice.call(document.querySelectorAll(".resultUrl"));
+	var links = module.searchResultUrl();
+	for (var i = 0; i < displayResults.length; i++) {
+        var result = displayResults[i];
+        result.setAttribute("href", links[i]);
+        console.log(displayResults[i]);
+	}
+}
 
-
-
-
+function toggledisplayResults(){
+    var div = document.getElementsByTagName("main")[0];
+    div.style.display = div.style.display == "block" ? "none" : "block";
+}
