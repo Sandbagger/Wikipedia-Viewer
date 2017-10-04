@@ -46,6 +46,7 @@ var module = (function(){
 console.log("got to module");
 	return {
 		store: function(val){
+			storedValue = [];
 			storedValue.push(val);
 			console.log("got to module.store");
 			module.updateDisplay();
@@ -124,6 +125,6 @@ function updateResultsUrl(){
 }
 
 function toggledisplayResults(){
-    var div = document.getElementsByTagName("main")[0];
-    div.style.display = div.style.display == "block" ? "none" : "block";
+    	var div = document.getElementsByTagName("main")[0];
+    div.style.display = "block";
 }
