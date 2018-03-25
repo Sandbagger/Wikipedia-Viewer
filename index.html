@@ -2,26 +2,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Wiki Viewer</title>
 	<link rel="stylesheet" type="text/css" href="wikiViewer.css">
+	<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   	<script type="text/javascript" src="wikiViewer.js"></script>
 
 </head>
 <body>
-<div class="container"> 
-		<div class="wv">
+
+		<div class="wv"> <!-- flex -->
 			<header id="title"><span>Wiki Viewer</span></header>
-			<div class="subcontainer">
+					<div> 
+				<div class="subcontainer"><!-- flex -->
+					
+					<div id="padding"> 
 						<span class="icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+					</div>
 						<input type="text" id="search" name="search" placeholder="Search here" oninput="requestJSONP()" autocomplete="off">
+					
 				</div>
-			
+				</div>
 			<div id="results">	
-				</div>
+			</div>
 			
 		</div>
-</div>
+
 
 </body>
 <script src="https://use.fontawesome.com/02b956c77d.js"></script>

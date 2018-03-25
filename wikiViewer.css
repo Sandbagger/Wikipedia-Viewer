@@ -1,19 +1,13 @@
 
+
+
+
 body {
 	background-color: white;
 	font-family: 'Lato', sans-serif;
+  background-color: #4ABDAC;
 }
 
-
-
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-
-}
 
 .wv {
   display: flex;
@@ -21,11 +15,8 @@ body {
   min-height: 24em;
   justify-content: center;
   flex-direction: column;
-  width: 70%;
   height: 80%;
-  border: 5px solid white;
-  border-radius: 15px;
-
+  margin-top:10%;
   background-color: #4ABDAC;
 }
 
@@ -34,13 +25,15 @@ body {
 font-size: 3rem;
 margin: auto;
 color: black;
-margin-top: 5%;
-margin-bottom: 5%;
+
 }
 
 span{
 	background: white;
+  padding-right: 10px;
+  padding-left: 10px;
 }
+
 
 .subcontainer{
   width:100%;
@@ -52,11 +45,11 @@ span{
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding-bottom: 25%;
 }
 
 .subcontainer input#search{
-  width: 30%;
+  width: 100%;
   height: 50px;
   background: white;
   border: none;
@@ -71,16 +64,10 @@ span{
 
 .subcontainer .icon {
  position: absolute;
-  top: 45%;
-  margin-left: -15%;
-  margin-top: -7px;
+  margin-left: 2%;
+  margin-top: -10px;
   z-index: 1;
   color: black;
-}
-
-header {
-	margin-top: 2%;
-  margin-bottom: 2%;
 }
 
 
@@ -99,6 +86,7 @@ p {
   flex-direction: column;
   background-color: #4ABDAC;
   margin-bottom: 1%;
+  height: 100%;
 }
 
 a {
