@@ -12,10 +12,9 @@ body {
 .wv {
   display: flex;
   align-items: center;
-  min-height: 24em;
   justify-content: center;
   flex-direction: column;
-  height: 80%;
+  height: 100%;
   margin-top:10%;
   background-color: #4ABDAC;
 }
@@ -34,6 +33,9 @@ span{
   padding-left: 10px;
 }
 
+.container{
+  height: 25vh;
+}
 
 .subcontainer{
   width:100%;
@@ -87,13 +89,14 @@ p {
   background-color: #4ABDAC;
   margin-bottom: 1%;
   height: 100%;
+  width: 85vw;
 }
 
 a {
   width: 70%;
   margin-top: 1%;
   background-color: white;
-  padding: 1% 1% 1% 1%;
+  padding:  15px 15px 15px 15px;
   text-decoration: none;
   color: black;
 }
@@ -128,7 +131,7 @@ header {
 }
 
 .fade-in{
-    animation: fadeIn .75s forwards;
+    animation: fadeIn 3s forwards;
 }
 
 img {
